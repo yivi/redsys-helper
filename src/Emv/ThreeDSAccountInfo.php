@@ -15,7 +15,6 @@ class ThreeDSAccountInfo implements \JsonSerializable
         public readonly ?int $passwordChangeAgeIndicator = null,
         public readonly ?string $passwordChangeAge = null,
         public readonly ?int $purchaseCount = null,
-
         public readonly ?string $provisionAttemptsDay = null,
         public readonly ?string $txnActivityDay = null,
         public readonly ?string $txnActivityYear = null,
@@ -35,8 +34,7 @@ class ThreeDSAccountInfo implements \JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        return array_filter(json_decode(json_encode($this), true), fn($e) => $e !== null);
+        return array_filter((array)$this, fn($e) => $e !== null);
     }
-
 
 }
